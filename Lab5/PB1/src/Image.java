@@ -2,7 +2,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Image implements Element,Picture {
     private String imageName;
-
+    private ImageLoader lodaer;
+    private ImageLoaderFactory imageLoaderFactory = new ImageLoaderFactory();
     private Dimension dim = new Dimension(400,400);
 
     public Image(String imageName){
@@ -22,6 +23,9 @@ public class Image implements Element,Picture {
     @Override
     public void add(Element element) throws Exception {
 
+    }
+    public void loadContent() throws Exception {
+        lodaer = ImageLoaderFactory.create(imageName);
     }
 
     @Override
